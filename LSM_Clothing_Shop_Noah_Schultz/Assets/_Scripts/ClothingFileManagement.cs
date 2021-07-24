@@ -51,6 +51,8 @@ public class ClothingFileManagement : MonoBehaviour
     public static bool fit24 = false;
     public static bool fit25 = true;
 
+    public static Sprite d_Hat, d_Shirt, d_Pant;
+
 
     public void Awake()
     {

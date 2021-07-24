@@ -33,14 +33,14 @@ public class PlayerCoinCount : MonoBehaviour
     {
         coinCount += added;
         if (coinCountText)
-            coinCountText.text = "Coins - " + coinCount.ToString();
+            coinCountText.text = "Coins: " + coinCount.ToString();
     }
 
     public void RemoveCoins (int removed)
     {
         coinCount -= removed;
         if (coinCountText)
-            coinCountText.text = "Coins - " + coinCount.ToString();
+            coinCountText.text = "Coins: " + coinCount.ToString();
     }
 
     /// <summary>

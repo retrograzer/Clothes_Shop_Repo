@@ -15,7 +15,6 @@ public class MenuNavigation : MonoBehaviour
     public Text costText, itemNamePreviewText;
     public Image hatPreview, shirtPreview, pantPreview;
     public Sprite d_Hat, d_Shirt, d_Pant;
-    public bool shopMenu = true;
     public List<FillItemGrid> itemGrids = new List<FillItemGrid>();
     
     List<GameObject> allMenus = new List<GameObject>();
@@ -24,8 +23,9 @@ public class MenuNavigation : MonoBehaviour
     PlayerCoinCount cc;
     OutfitHolder oh;
 
+
     // Start is called before the first frame update
-    void Start()
+    void Awake()
     {
         for (int i = 0; i < tabvl.transform.childCount; i++) //fill allTabs with all of the tabs in the Vertical Layout group
         {
@@ -47,6 +47,12 @@ public class MenuNavigation : MonoBehaviour
 
         ChangeTab(0); //set it do default to shirts when opening
 
+        SetDefaultPreviews();
+        ClearPreview();
+    }
+
+    private void Start()
+    {
         ClearPreview();
     }
 
@@ -126,15 +132,15 @@ public class MenuNavigation : MonoBehaviour
             {
                 case ("shirt"):
                     oh.ChangeShirt(currentlySelectedItem.itemSprite);
-                    d_Shirt = currentlySelectedItem.itemSprite;
+                    ClothingFileManagement.d_Shirt = currentlySelectedItem.itemSprite;
                     break;
                 case ("pants"):
                     oh.ChangePants(currentlySelectedItem.itemSprite);
-                    d_Pant = currentlySelectedItem.itemSprite;
+                    ClothingFileManagement.d_Pant = currentlySelectedItem.itemSprite;
                     break;
                 case ("hat"):
                     oh.ChangeHat(currentlySelectedItem.itemSprite);
-                    d_Hat = currentlySelectedItem.itemSprite;
+                    ClothingFileManagement.d_Hat = currentlySelectedItem.itemSprite;
                     break;
             }
             return;
@@ -151,15 +157,15 @@ public class MenuNavigation : MonoBehaviour
             {
                 case ("shirt"):
                     oh.ChangeShirt(currentlySelectedItem.itemSprite);
-                    d_Shirt = currentlySelectedItem.itemSprite;
+                    ClothingFileManagement.d_Shirt = currentlySelectedItem.itemSprite;
                     break;
                 case ("pants"):
                     oh.ChangePants(currentlySelectedItem.itemSprite);
-                    d_Pant = currentlySelectedItem.itemSprite;
+                    ClothingFileManagement.d_Pant = currentlySelectedItem.itemSprite;
                     break;
                 case ("hat"):
                     oh.ChangeHat(currentlySelectedItem.itemSprite);
-                    d_Hat = currentlySelectedItem.itemSprite;
+                    ClothingFileManagement.d_Hat = currentlySelectedItem.itemSprite;
                     break;
             }
             RefreshGrids();
@@ -181,14 +187,17 @@ public class MenuNavigation : MonoBehaviour
             case ("shirt"):
                 oh.ChangeShirt(currentlySelectedItem.itemSprite);
                 d_Shirt = currentlySelectedItem.itemSprite;
+                ClothingFileManagement.d_Shirt = currentlySelectedItem.itemSprite;
                 break;
             case ("pants"):
                 oh.ChangePants(currentlySelectedItem.itemSprite);
                 d_Pant = currentlySelectedItem.itemSprite;
+                ClothingFileManagement.d_Pant = currentlySelectedItem.itemSprite;
                 break;
             case ("hat"):
                 oh.ChangeHat(currentlySelectedItem.itemSprite);
                 d_Hat = currentlySelectedItem.itemSprite;
+                ClothingFileManagement.d_Hat = currentlySelectedItem.itemSprite;
                 break;
         }
     }
@@ -203,9 +212,17 @@ public class MenuNavigation : MonoBehaviour
 
     public void ClearPreview()
     {
-        shirtPreview.sprite = d_Shirt;
-        pantPreview.sprite = d_Pant;
-        hatPreview.sprite = d_Hat;
+        Debug.Log("Clear");
+        shirtPreview.sprite = ClothingFileManagement.d_Shirt;
+        pantPreview.sprite = ClothingFileManagement.d_Pant;
+        hatPreview.sprite = ClothingFileManagement.d_Hat;
+    }
+
+    void SetDefaultPreviews ()
+    {
+        ClothingFileManagement.d_Shirt = this.d_Shirt;
+        ClothingFileManagement.d_Pant = this.d_Pant;
+        ClothingFileManagement.d_Hat = this.d_Hat;
     }
 
     //Just an override for ToString so I can see the names of gamebject lists for debugging
