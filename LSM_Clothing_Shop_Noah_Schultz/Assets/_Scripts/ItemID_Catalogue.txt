@@ -1,0 +1,30 @@
+Item ID Directory
+-----------------
+Side Note: I'm sure there's a better way to do saving and loading of what articles I've bought or not,
+but just like how I'm doing cosmetics I'm just going to go for the long way and see if I can sus out the
+short way during the process. If I find a better way I'll come back and edit this note. Obviously this would technically work
+but the more items that you start to add, the crazier the JSON is gonna get. For sim games I guess that's pretty normal, after all there's
+a TON to save and load but still there's probably a way less tedious way to do it.
+
+Hats are 1-5
+1- Red
+2- Cowboy
+3- Tophat
+4- Mohawk
+5- Default
+
+
+Shirts are 11-15
+11- Red
+12- Blue
+13- Tuxedo
+14- Hawiian
+15- Default
+
+
+Pants are 21-25
+21- Denim
+22- Black
+23- Chaps
+24-	Bathing Suit
+25- Default
